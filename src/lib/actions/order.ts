@@ -40,6 +40,18 @@ export async function createOrder(data: CreateOrderParams) {
     // Generate a simple Order Number (e.g., ORD-12345-ABC)
     const orderNumber = `ORD-${Date.now().toString().slice(-6)}-${randomBytes(2).toString('hex').toUpperCase()}`;
 
+    // Validate that all products and variants exist
+    for (const item of data.items) {
+      const product = await prisma.product.findUnique({ where: { id: item.productId } });
+      if (!product) {
+        return { success: false, error: `Product not found: ${item.name}. Please clear your cart and try again.` };
+      }
+      const variant = await prisma.productVariant.findUnique({ where: { id: item.variantId } });
+      if (!variant) {
+        return { success: false, error: `Variant not found for ${item.name}. Please clear your cart and try again.` };
+      }
+    }
+
     // Database access via Prisma
     const order = await prisma.order.create({
       data: {

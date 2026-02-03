@@ -52,8 +52,16 @@ export default function LoginPage() {
           router.push('/');
           router.refresh();
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      let errorMessage = err instanceof Error ? err.message : 'Terjadi kesalahan';
+      
+      if (errorMessage.includes('Email not confirmed')) {
+        errorMessage = 'Email belum diverifikasi. Silakan cek inbox email Anda (termasuk folder spam) untuk konfirmasi.';
+      } else if (errorMessage.includes('Invalid login credentials')) {
+        errorMessage = 'Email atau password salah.';
+      }
+
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

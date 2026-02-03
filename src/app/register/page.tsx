@@ -26,6 +26,7 @@ export default function RegisterPage() {
         email,
         password,
         options: {
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
           data: {
             full_name: name,
           },
@@ -37,15 +38,21 @@ export default function RegisterPage() {
       }
 
       // If email confirmation is required/not required check
-      if (data?.user && data.user.email) {
-         // Sync user to database
-         await syncUser(data.user.id, data.user.email, name);
+      if (data?.user) {
+         // Sync user to database - use email from form as fallback
+         const userEmail = data.user.email || email;
+         const result = await syncUser(data.user.id, userEmail, name);
+         
+         if (!result.success) {
+           console.error('Failed to sync user to database');
+         }
 
          router.push('/');
          router.refresh();
       }
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred';
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }

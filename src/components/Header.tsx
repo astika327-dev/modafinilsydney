@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart, Menu, X, User, Package } from 'lucide-react';
+import { ShoppingCart, Menu, X, User as UserIcon, Package } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
+import type { User } from '@supabase/supabase-js';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);
   const { items, setIsOpen } = useCartStore();
 
   useEffect(() => {
@@ -108,7 +109,7 @@ export default function Header() {
                 className="p-2 hover:bg-slate-100 rounded-full transition-colors group relative"
                 title={user ? "My Account" : "Sign In"}
               >
-                <User className={`w-6 h-6 ${user ? 'text-blue-600' : 'text-slate-700'}`} />
+                <UserIcon className={`w-6 h-6 ${user ? 'text-blue-600' : 'text-slate-700'}`} />
               </Link>
 
               {/* Cart */}
@@ -164,7 +165,7 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center gap-3 text-slate-600 hover:text-blue-600 hover:bg-slate-50 font-medium py-3 px-4 rounded-xl transition-colors"
                 >
-                  <User className="w-5 h-5" />
+                  <UserIcon className="w-5 h-5" />
                   {user ? 'My Account' : 'Sign In'}
                 </Link>
               </li>
