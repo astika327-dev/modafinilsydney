@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Modafinil Australia Direct | Buy Premium Modafinil Online",
+  title: "Modafinil Sydney | Buy Premium Modafinil Online",
   description: "Australia's trusted supplier of premium Modafinil. Fast, discreet shipping with guaranteed delivery. Buy Modafinil online from Sydney with confidence.",
   keywords: "modafinil, buy modafinil, modafinil australia, modafinil sydney, nootropics, cognitive enhancement, modalert, modvigil",
   icons: {
@@ -20,21 +20,21 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
   openGraph: {
-    title: "Modafinil Australia Direct | Your Trusted Source for Cognitive Enhancement",
+    title: "Modafinil Sydney | Your Trusted Source for Cognitive Enhancement",
     description: "Australia's #1 trusted supplier of premium Modafinil. Fast, discreet shipping Australia-wide with guaranteed delivery.",
     type: "website",
     locale: "en_AU",
-    siteName: "Modafinil Australia Direct",
+    siteName: "Modafinil Sydney",
     images: [{
       url: '/images/og-image.png',
       width: 1200,
       height: 630,
-      alt: 'Modafinil Australia Direct - Premium Cognitive Enhancement',
+      alt: 'Modafinil Sydney - Premium Cognitive Enhancement',
     }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Modafinil Australia Direct | Buy Premium Modafinil Online",
+    title: "Modafinil Sydney | Buy Premium Modafinil Online",
     description: "Australia's trusted supplier of premium Modafinil. Fast, discreet shipping with guaranteed delivery.",
     images: ['/images/og-image.png'],
   },

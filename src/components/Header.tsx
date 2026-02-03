@@ -68,7 +68,7 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/icon.png"
+                src="/images/icon_web_new.png"
                 alt="ModafinilSydney"
                 width={200}
                 height={50}

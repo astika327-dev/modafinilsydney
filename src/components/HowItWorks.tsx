@@ -27,9 +27,7 @@ export default function HowItWorks() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-white/10 backdrop-blur-sm text-white/90 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-            Simple Process
-          </span>
+
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4">
             How It Works
           </h2>

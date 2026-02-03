@@ -199,7 +199,7 @@ Modvigil 200 has a gentler, softer onset compared to Modalert 200, with fewer ji
 Modvigil 200 has been helping Aussies for many years and has stood the test of time because it works. From Perth to Sydney, Adelaide to Darwin—Modvigil 200 is the go-to option for Australians wanting the competitive edge.
 
 **4. Readily Available and Fast Delivery**
-Due to its popularity in Australia, Modvigil 200 is readily available and can be easily purchased online through Modafinil Australia Direct, with quick delivery and discreet packaging.
+Due to its popularity in Australia, Modvigil 200 is readily available and can be easily purchased online through Modafinil Sydney, with quick delivery and discreet packaging.
 
 **Who Buys Modvigil 200 in Australia?**
 - **Shift workers:** Night packers, police, traders, doctors, nurses, chefs, factory workers
@@ -365,7 +365,7 @@ If you're looking for a real solution, you deserve a process that feels straight
     manufacturer: 'Sun Pharmaceutical',
     description: "If 200mg feels like it's not cutting it, Modafinil 400mg is the step up serious users go for. Ships Australia-wide, fast and discreet.",
     longDescription: `
-If 200mg feels like it's not cutting it, Modafinil 400mg is the step up serious users go for. Modafinil Australia Direct ships Australia-wide, fast and discreet, so you can order once and get on with your week. Stop fighting fatigue the hard way and go straight to the strength that keeps you switched on. Buy Modafinil 400 online and get it delivered ASAP!
+If 200mg feels like it's not cutting it, Modafinil 400mg is the step up serious users go for. Modafinil Sydney ships Australia-wide, fast and discreet, so you can order once and get on with your week. Stop fighting fatigue the hard way and go straight to the strength that keeps you switched on. Buy Modafinil 400 online and get it delivered ASAP!
 
 **Do you want to buy Modafinil 400mg?**
 If you're here because you're exhausted all the time, you're not alone. When daytime sleepiness is so intense that it affects work, driving, studying, or even basic motivation, you start looking for something that actually helps, not another "try more coffee" suggestion. Modafinil 400 is used for real sleep-related conditions, and for some people, it can make day-to-day life feel manageable again. Modafinil 400mg is considered a higher daily dose, so it's best approached carefully and sensibly, ideally with medical guidance.
@@ -415,8 +415,8 @@ Some people get headaches, nausea, dry mouth, reduced appetite, mild anxiety, ir
 **Serious Side Effects That Need Fast Help ⚠️**
 Seek urgent medical help if you experience chest pain, severe agitation, confusion, hallucinations, suicidal thoughts, severe rash, or swelling of the face or throat. Those aren't "normal side effects" and shouldn't be ignored.
 
-**Getting Modafinil from Modafinil Australia Direct 👍**
-If you're looking for a real solution, you deserve a process that feels straightforward and respectful. Modafinil Australia Direct is here for people who want clear information, discreet handling, and a hassle free, honest buying experience without any dramas. If you're ready to move forward, choose the option that fits your needs, keep it sensible with dose and timing, and focus on the real goal: feeling steady, capable, and awake again, day after day.
+**Getting Modafinil from Modafinil Sydney 👍**
+If you're looking for a real solution, you deserve a process that feels straightforward and respectful. Modafinil Sydney is here for people who want clear information, discreet handling, and a hassle free, honest buying experience without any dramas. If you're ready to move forward, choose the option that fits your needs, keep it sensible with dose and timing, and focus on the real goal: feeling steady, capable, and awake again, day after day.
     `,
     image: '/images/Modasmart-400-2-scaled.webp',
     images: ['/images/Modasmart-400-2-scaled.webp'],

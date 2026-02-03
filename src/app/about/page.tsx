@@ -65,9 +65,9 @@ export default function AboutPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-linear-to-br from-slate-900/90 via-blue-900/80 to-slate-800/90" />
           <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+            className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40"
             style={{
-              backgroundImage: 'url(/images/hero-sydney.jpg)',
+              backgroundImage: 'url(/images/hero_logo_new.png)',
             }}
           />
         </div>

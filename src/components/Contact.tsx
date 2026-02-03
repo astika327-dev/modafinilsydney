@@ -55,9 +55,7 @@ export default function Contact() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Contact Info */}
           <div>
-            <span className="inline-block bg-linear-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-              Get In Touch
-            </span>
+
             <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4">
               Contact Us
             </h2>

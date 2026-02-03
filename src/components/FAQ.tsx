@@ -63,9 +63,7 @@ export default function FAQ() {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <span className="inline-block bg-linear-to-r from-blue-100 to-cyan-100 text-blue-700 px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-            Got Questions?
-          </span>
+
           <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4">
             Frequently Asked Questions
           </h2>

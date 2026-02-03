@@ -1,9 +1,11 @@
-'use client';
+
 
 import { Star, Quote, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
+import WriteReviewForm from '@/components/WriteReviewForm';
+import { getReviews, getProductsForReview } from '@/lib/actions/review';
 
-const reviews = [
+const staticReviews = [
   {
     id: 1,
     title: "SPEEDY delivery 🚚🚚🚚",
@@ -27,7 +29,7 @@ const reviews = [
   {
     id: 3,
     title: "Found the best site :))",
-    content: "Looked around for ages but these guys at Modafinil Australia Direct are awesome. Seriously top service!!",
+    content: "Looked around for ages but these guys at Modafinil Sydney are awesome. Seriously top service!!",
     author: "Mike R.",
     location: "Brisbane",
     rating: 5,
@@ -126,7 +128,18 @@ const reviews = [
   },
 ];
 
-function ReviewCard({ review }: { review: typeof reviews[0] }) {
+interface ReviewType {
+  id: string | number;
+  title: string;
+  content: string;
+  author: string;
+  location: string;
+  rating: number;
+  product: string;
+  verified: boolean;
+}
+
+function ReviewCard({ review }: { review: ReviewType }) {
   return (
     <div className="bg-white rounded-2xl p-6 shadow-lg shadow-slate-200/50 hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300">
       {/* Header */}
@@ -174,7 +187,10 @@ function ReviewCard({ review }: { review: typeof reviews[0] }) {
   );
 }
 
-export default function ReviewsPage() {
+export default async function ReviewsPage() {
+  const dbReviews = await getReviews();
+  const products = await getProductsForReview();
+  const reviews = [...staticReviews, ...dbReviews];
   return (
     <main className="min-h-screen bg-linear-to-b from-slate-50 to-white">
       {/* Hero Section */}
@@ -182,14 +198,12 @@ export default function ReviewsPage() {
         <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-block bg-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold uppercase tracking-wider mb-4">
-              Customer Reviews
-            </span>
+
             <h1 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
               What Our Customers Say
             </h1>
             <p className="text-xl text-blue-100 mb-8">
-              Real reviews from real Australians who trust Modafinil Australia Direct for their cognitive enhancement needs.
+              Real reviews from real Australians who trust Modafinil Sydney for their cognitive enhancement needs.
             </p>
             <div className="flex items-center justify-center gap-2 mb-4">
               {[...Array(5)].map((_, i) => (
@@ -227,6 +241,13 @@ export default function ReviewsPage() {
               <ReviewCard key={review.id} review={review} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Write Review Form */}
+      <section className="py-20 bg-slate-50">
+        <div className="container mx-auto px-4">
+            <WriteReviewForm products={products} />
         </div>
       </section>
 

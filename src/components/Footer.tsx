@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Send, Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, Twitter } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -66,7 +66,7 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/images/icon.png"
+                src="/images/icon_web_new.png"
                 alt="ModafinilSydney"
                 width={180}
                 height={45}
@@ -78,22 +78,7 @@ export default function Footer() {
             </p>
 
             {/* Newsletter */}
-            <div className="mb-6">
-              <h4 className="font-semibold mb-3">Stay Updated</h4>
-              <form className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="Your email address"
-                  className="flex-1 px-4 py-3 rounded-xl bg-white/10 border border-white/20 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all text-white placeholder-white/50"
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-xl transition-colors"
-                >
-                  <Send className="w-5 h-5" />
-                </button>
-              </form>
-            </div>
+
 
             {/* Social Links */}
             <div className="flex gap-3">

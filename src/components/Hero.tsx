@@ -12,9 +12,9 @@ export default function Hero() {
         
         {/* Background Image (when available) */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
+          className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40"
           style={{
-            backgroundImage: 'url(/images/hero-sydney.jpg)',
+            backgroundImage: 'url(/images/hero_logo_new.png)',
           }}
         />
         
@@ -32,7 +32,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 animate-fade-in">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6 mt-24 animate-fade-in">
             <span className="text-2xl">🇦🇺</span>
             <span className="text-white/90 text-sm font-medium">Australia&apos;s Trusted Supplier</span>
           </div>
@@ -62,43 +62,16 @@ export default function Hero() {
               Shop Now
               <ArrowRight className="w-5 h-5" />
             </a>
-            <a
-              href="#how-it-works"
-              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300"
-            >
-              Learn More
-            </a>
+
           </div>
 
           {/* Features */}
-          <div className="flex flex-wrap gap-6">
-            {[
-              { icon: '🚚', label: 'Express Delivery' },
-              { icon: '💳', label: 'Secure Payment' },
-              { icon: '✓', label: '100% Genuine' },
-            ].map((feature) => (
-              <div
-                key={feature.label}
-                className="flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3"
-              >
-                <span className="text-xl">{feature.icon}</span>
-                <span className="text-white/90 font-medium">{feature.label}</span>
-              </div>
-            ))}
-          </div>
+
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <a
-        href="#products"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/60 hover:text-white/90 transition-colors animate-bounce"
-      >
-        <span className="text-sm">Scroll Down</span>
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </a>
+
     </section>
   );
 }
