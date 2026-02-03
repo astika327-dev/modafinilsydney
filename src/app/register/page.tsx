@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { Loader2 } from 'lucide-react';
+import { syncUser } from '@/lib/actions/auth';
 
 export default function RegisterPage() {
   const [name, setName] = useState('');
@@ -36,10 +37,10 @@ export default function RegisterPage() {
       }
 
       // If email confirmation is required/not required check
-      if (data?.user) {
-         // Success!
-         // Note: Database sync for public.users table should ideally be handled by a Trigger in Supabase
-         // or a server-side effect. For now, we rely on Auth.
+      if (data?.user && data.user.email) {
+         // Sync user to database
+         await syncUser(data.user.id, data.user.email, name);
+
          router.push('/');
          router.refresh();
       }

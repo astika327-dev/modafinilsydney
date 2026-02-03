@@ -5,6 +5,10 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase/client';
 import { Loader2 } from 'lucide-react';
+import { getUserRole } from '@/lib/actions/user';
+import { syncUser } from '@/lib/actions/auth';
+
+// ...
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -13,14 +17,13 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
   const supabase = createClient();
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -29,8 +32,26 @@ export default function LoginPage() {
         throw error;
       }
 
-      router.push('/');
-      router.refresh();
+      if (data.user) {
+        if (data.user.email) {
+            await syncUser(data.user.id, data.user.email, ''); 
+        }
+
+        const { success, role } = await getUserRole(data.user.id);
+        
+        // Refresh router to update auth state in UI
+        router.refresh();
+
+        if (success && role === 'ADMIN') {
+          // Use window.location for admin to ensure clean state and avoid potential router loops
+          window.location.href = '/admin';
+        } else {
+          router.push('/account'); 
+        }
+      } else {
+          router.push('/');
+          router.refresh();
+      }
     } catch (err: any) {
       setError(err.message);
     } finally {
