@@ -1,198 +1,186 @@
 
 import { PrismaClient } from '@prisma/client';
+
 const prisma = new PrismaClient();
 
 const products = [
   {
+    id: 'modalert-200',
     name: 'Modalert 200mg',
     slug: 'modalert-200mg',
-    description: "Boost your productivity with Modalert 200mg, Australia's go-to smart choice for sharper focus, longer alertness, and clear-headed energy without the jitters.",
+    category: 'Modafinil',
+    description: "Boost your productivity with Modalert 200mg, Australia's go-to smart choice for sharper focus and clear-headed energy.",
     image: '/images/Modalert-200mg.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '30 pills', sku: 'MOD-200-30', price: 120, quantity: 30 },
-      { name: '50 pills', sku: 'MOD-200-50', price: 200, quantity: 50 },
-      { name: '100 pills', sku: 'MOD-200-100', price: 350, quantity: 100 },
-      { name: '200 pills', sku: 'MOD-200-200', price: 600, quantity: 200 },
-      { name: '300 pills', sku: 'MOD-200-300', price: 750, quantity: 300 },
-      { name: '500 pills', sku: 'MOD-200-500', price: 1000, quantity: 500 },
+      { id: 'modalert-200-30', name: '30 pills', sku: 'AL-200-30', price: 120, quantity: 30 },
+      { id: 'modalert-200-50', name: '50 pills', sku: 'AL-200-50', price: 200, quantity: 50 },
+      { id: 'modalert-200-100', name: '100 pills', sku: 'AL-200-100', price: 350, quantity: 100 },
+      { id: 'modalert-200-200', name: '200 pills', sku: 'AL-200-200', price: 600, quantity: 200 },
     ],
   },
   {
+    id: 'modalert-100',
     name: 'Modalert 100mg',
     slug: 'modalert-100mg',
-    description: "Power through your day with Modalert 100mg, the trusted Modafinil brand that keeps Aussies switched on. Perfect for long workdays, study marathons, or anyone needing a sharp mental edge.",
+    category: 'Modafinil',
+    description: "Power through your day with Modalert 100mg. Perfect for long workdays, study marathons, or anyone needing a sharp mental edge.",
     image: '/images/Modalert-100-1-scaled.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '30 pills', sku: 'MOD-100-30', price: 69, quantity: 30 },
-      { name: '50 pills', sku: 'MOD-100-50', price: 96, quantity: 50 },
-      { name: '100 pills', sku: 'MOD-100-100', price: 155, quantity: 100 },
-      { name: '200 pills', sku: 'MOD-100-200', price: 259, quantity: 200 },
-      { name: '300 pills', sku: 'MOD-100-300', price: 338, quantity: 300 },
-      { name: '500 pills', sku: 'MOD-100-500', price: 540, quantity: 500 },
+      { id: 'modalert-100-30', name: '30 pills', sku: 'AL-100-30', price: 69, quantity: 30 },
+      { id: 'modalert-100-50', name: '50 pills', sku: 'AL-100-50', price: 96, quantity: 50 },
+      { id: 'modalert-100-100', name: '100 pills', sku: 'AL-100-100', price: 155, quantity: 100 },
+      { id: 'modalert-100-200', name: '200 pills', sku: 'AL-100-200', price: 259, quantity: 200 },
     ],
   },
   {
+    id: 'modafresh',
     name: 'Modafresh 200mg',
     slug: 'modafresh-200mg',
-    description: "Power through your busiest days with Modafresh 200mg. A popular generic form of Modafinil known for steady, clear-headed alertness rather than the spiky buzz from energy drinks or coffee.",
+    category: 'Modafinil',
+    description: "Power through your busiest days with Modafresh 200mg. Sharp focus, steady energy, and clean-minded alertness without the jitters.",
     image: '/images/Modafresh-200-4-scaled.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '30 pills', sku: 'FRESH-200-30', price: 75, quantity: 30 },
-      { name: '50 pills', sku: 'FRESH-200-50', price: 110, quantity: 50 },
-      { name: '100 pills', sku: 'FRESH-200-100', price: 164, quantity: 100 },
-      { name: '200 pills', sku: 'FRESH-200-200', price: 273, quantity: 200 },
-      { name: '300 pills', sku: 'FRESH-200-300', price: 383, quantity: 300 },
-      { name: '500 pills', sku: 'FRESH-200-500', price: 585, quantity: 500 },
+      { id: 'modafresh-30', name: '30 pills', sku: 'FRE-200-30', price: 75, quantity: 30 },
+      { id: 'modafresh-50', name: '50 pills', sku: 'FRE-200-50', price: 110, quantity: 50 },
+      { id: 'modafresh-100', name: '100 pills', sku: 'FRE-200-100', price: 164, quantity: 100 },
+      { id: 'modafresh-200', name: '200 pills', sku: 'FRE-200-200', price: 273, quantity: 200 },
     ],
   },
   {
+    id: 'modvigil',
     name: 'Modvigil 200mg',
     slug: 'modvigil-200mg',
-    description: "Your 'get it done' switch with clean wakefulness, crisp focus, and steady drive. One of the most affordable generic Modafinil options in Australia.",
+    category: 'Modafinil',
+    description: "Your 'get it done' switch with clean wakefulness, crisp focus, and steady drive. Super affordable and Aussie-trusted.",
     image: '/images/Modvigil-200-5-scaled.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '30 pills', sku: 'VIGIL-200-30', price: 83, quantity: 30 },
-      { name: '50 pills', sku: 'VIGIL-200-50', price: 117, quantity: 50 },
-      { name: '100 pills', sku: 'VIGIL-200-100', price: 203, quantity: 100 },
-      { name: '200 pills', sku: 'VIGIL-200-200', price: 365, quantity: 200 },
-      { name: '300 pills', sku: 'VIGIL-200-300', price: 462, quantity: 300 },
-      { name: '500 pills', sku: 'VIGIL-200-500', price: 720, quantity: 500 },
+      { id: 'modvigil-30', name: '30 pills', sku: 'VIG-200-30', price: 83, quantity: 30 },
+      { id: 'modvigil-50', name: '50 pills', sku: 'VIG-200-50', price: 117, quantity: 50 },
+      { id: 'modvigil-100', name: '100 pills', sku: 'VIG-200-100', price: 203, quantity: 100 },
+      { id: 'modvigil-200', name: '200 pills', sku: 'VIG-200-200', price: 365, quantity: 200 },
     ],
   },
   {
+    id: 'modawake',
     name: 'Modawake 200mg',
     slug: 'modawake-200mg',
-    description: "Strong, long lasting focus, clean energy, and that 'switched on' feeling. Premium Modafinil trusted by students, professionals, and shift workers.",
+    category: 'Modafinil',
+    description: "Strong, long lasting focus and clean energy. Premium Modafinil trusted by students, professionals, and shift workers.",
     image: '/images/modawake-200mg.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '30 pills', sku: 'WAKE-200-30', price: 75, quantity: 30 },
-      { name: '50 pills', sku: 'WAKE-200-50', price: 101, quantity: 50 },
-      { name: '100 pills', sku: 'WAKE-200-100', price: 195, quantity: 100 },
-      { name: '200 pills', sku: 'WAKE-200-200', price: 327, quantity: 200 },
-      { name: '300 pills', sku: 'WAKE-200-300', price: 427, quantity: 300 },
-      { name: '500 pills', sku: 'WAKE-200-500', price: 650, quantity: 500 },
+      { id: 'modawake-30', name: '30 pills', sku: 'WAK-200-30', price: 75, quantity: 30 },
+      { id: 'modawake-50', name: '50 pills', sku: 'WAK-200-50', price: 101, quantity: 50 },
+      { id: 'modawake-100', name: '100 pills', sku: 'WAK-200-100', price: 195, quantity: 100 },
+      { id: 'modawake-200', name: '200 pills', sku: 'WAK-200-200', price: 327, quantity: 200 },
     ],
   },
   {
+    id: 'modasmart',
     name: 'Modasmart 400mg',
     slug: 'modasmart-400mg',
-    description: "If 200mg feels like it's not cutting it, Modafinil 400mg is the step up serious users go for. Stop fighting fatigue the hard way and go straight to the strength that keeps you switched on.",
+    category: 'Modafinil',
+    description: "If 200mg feels like it's not cutting it, Modafinil 400mg is the step up serious users go for. Stop fighting fatigue the hard way.",
     image: '/images/Modasmart-400-2-scaled.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '50 pills', sku: 'SMART-400-50', price: 152, quantity: 50 },
-      { name: '100 pills', sku: 'SMART-400-100', price: 244, quantity: 100 },
-      { name: '200 pills', sku: 'SMART-400-200', price: 411, quantity: 200 },
-      { name: '300 pills', sku: 'SMART-400-300', price: 548, quantity: 300 },
-      { name: '400 pills', sku: 'SMART-400-400', price: 685, quantity: 400 },
-      { name: '500 pills', sku: 'SMART-400-500', price: 792, quantity: 500 },
+      { id: 'modasmart-50', name: '50 pills', sku: 'SMA-400-50', price: 152, quantity: 50 },
+      { id: 'modasmart-100', name: '100 pills', sku: 'SMA-400-100', price: 244, quantity: 100 },
+      { id: 'modasmart-200', name: '200 pills', sku: 'SMA-400-200', price: 411, quantity: 200 },
+      { id: 'modasmart-300', name: '300 pills', sku: 'SMA-400-300', price: 548, quantity: 300 },
     ],
   },
   {
+    id: 'modafinil-400',
     name: 'Modafinil 400mg Australia',
     slug: 'modafinil-400mg-australia',
+    category: 'Modafinil',
     description: "If 200mg feels like it's not cutting it, Modafinil 400mg is the step up serious users go for. Ships Australia-wide, fast and discreet.",
     image: '/images/Modasmart-400-2-scaled.webp',
-    isActive: true,
-    category: {
-        connectOrCreate: {
-            where: { slug: 'modafinil' },
-            create: { name: 'Modafinil', slug: 'modafinil' }
-        }
-    },
     variants: [
-      { name: '50 pills', sku: 'MOD-400-50', price: 152, quantity: 50 },
-      { name: '100 pills', sku: 'MOD-400-100', price: 244, quantity: 100 },
-      { name: '200 pills', sku: 'MOD-400-200', price: 411, quantity: 200 },
-      { name: '300 pills', sku: 'MOD-400-300', price: 548, quantity: 300 },
-      { name: '400 pills', sku: 'MOD-400-400', price: 685, quantity: 400 },
-      { name: '500 pills', sku: 'MOD-400-500', price: 792, quantity: 500 },
+      { id: 'modafinil-400-50', name: '50 pills', sku: 'MAU-400-50', price: 152, quantity: 50 },
+      { id: 'modafinil-400-100', name: '100 pills', sku: 'MAU-400-100', price: 244, quantity: 100 },
+      { id: 'modafinil-400-200', name: '200 pills', sku: 'MAU-400-200', price: 411, quantity: 200 },
+      { id: 'modafinil-400-300', name: '300 pills', sku: 'MAU-400-300', price: 548, quantity: 300 },
     ],
-  }
+  },
 ];
 
 async function main() {
   console.log('Start seeding...');
-  
-  // Clean up existing data to avoid duplicates if re-running
-  // Uncomment if you want to wipe data: 
-  // await prisma.orderItem.deleteMany();
-  // await prisma.productVariant.deleteMany();
-  // await prisma.product.deleteMany();
-  // await prisma.category.deleteMany();
 
-  for (const p of products) {
-    const product = await prisma.product.upsert({
-      where: { slug: p.slug },
-      update: {
-        image: p.image, // Update image if product exists
-        name: p.name,
-        description: p.description
-      },
+  try {
+    // 0. Cleanup conflicting slugs if we want to force specific IDs
+    // Only delete products that have matching slugs but DIFFERENT IDs than what we desire
+    for (const p of products) {
+      const existing = await prisma.product.findUnique({ where: { slug: p.slug } });
+      if (existing && existing.id !== p.id) {
+        console.log(`Deleting conflicting product with slug ${p.slug} and id ${existing.id}`);
+        // Delete related variants first (due to cascade this might happen automatically but let's be safe if cascade isn't set)
+        // Actually cascade is set on schema, so just delete product
+        await prisma.product.delete({ where: { id: existing.id } });
+      }
+    }
+
+    // 1. Create Category
+    const category = await prisma.category.upsert({
+      where: { slug: 'modafinil' },
+      update: {},
       create: {
-        name: p.name,
-        slug: p.slug,
-        description: p.description,
-        image: p.image,
-        isActive: p.isActive,
-        category: p.category,
-        variants: {
-          create: p.variants
-        }
+        name: 'Modafinil',
+        slug: 'modafinil',
+        description: 'Premium Modafinil products',
       },
     });
-    console.log(`Created product with id: ${product.id}`);
+
+    // 2. Create Products
+    for (const p of products) {
+      console.log(`Upserting product: ${p.name}`);
+      const product = await prisma.product.upsert({
+        where: { id: p.id },
+        update: {
+          name: p.name,
+          slug: p.slug,
+          description: p.description,
+          image: p.image,
+        },
+        create: {
+          id: p.id,
+          name: p.name,
+          slug: p.slug,
+          description: p.description,
+          image: p.image,
+          categoryId: category.id,
+        },
+      });
+
+      // 3. Create Variants
+      for (const v of p.variants) {
+        await prisma.productVariant.upsert({
+          where: { id: v.id }, 
+          update: {
+            name: v.name,
+            price: v.price,
+            stock: 100,
+          },
+          create: {
+            id: v.id,
+            productId: product.id,
+            name: v.name,
+            sku: v.sku,  // Ensure SKU is unique (can rely on static strings above)
+            price: v.price,
+            quantity: v.quantity,
+            stock: 100,
+          },
+        });
+      }
+    }
+    
+    console.log('Seeding finished.');
+  } catch (e) {
+    console.error(e);
+    process.exit(1);
+  } finally {
+    await prisma.$disconnect();
   }
-  console.log('Seeding finished.');
 }
 
-main()
-  .then(async () => {
-    await prisma.$disconnect();
-  })
-  .catch(async (e) => {
-    console.error(e);
-    await prisma.$disconnect();
-    process.exit(1);
-  });
+main();

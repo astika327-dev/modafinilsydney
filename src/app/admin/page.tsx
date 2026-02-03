@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
+import LogoutButton from '@/components/LogoutButton';
 import { Package, DollarSign, Clock, CheckCircle, Truck, XCircle, AlertCircle } from 'lucide-react';
 
 // Format currency
@@ -62,6 +63,7 @@ export default async function AdminDashboard() {
               <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
                 A
               </div>
+              <LogoutButton />
             </div>
           </div>
         </div>
@@ -173,9 +175,9 @@ export default async function AdminDashboard() {
                                             {formatCurrency(Number(order.total))}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-right">
-                                            <button className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                            <Link href={`/admin/orders/${order.id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">
                                                 Manage
-                                            </button>
+                                            </Link>
                                         </td>
                                     </tr>
                                 );

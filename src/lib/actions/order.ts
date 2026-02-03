@@ -85,8 +85,54 @@ export async function createOrder(data: CreateOrderParams) {
 
     return { success: true, orderId: order.id, orderNumber: order.orderNumber };
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Failed to create order:', error);
-    return { success: false, error: error.message || 'Failed to create order' };
+    const errorMessage = error instanceof Error ? error.message : 'Failed to create order';
+    return { success: false, error: errorMessage };
+  }
+}
+
+// ... related code ...
+
+import { revalidatePath } from 'next/cache';
+import { OrderStatus } from '@prisma/client';
+
+
+import { createClient } from '@/lib/supabase/server';
+
+
+export async function updateOrderStatus(orderId: string, status: OrderStatus) {
+  try {
+    // 1. Auth Check
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      return { success: false, error: 'Unauthorized: No user found' };
+    }
+
+    // 2. Role Check
+    const dbUser = await prisma.user.findUnique({
+      where: { id: user.id },
+      select: { role: true }
+    });
+
+    if (dbUser?.role !== 'ADMIN') {
+      return { success: false, error: 'Unauthorized: Insufficient permissions' };
+    }
+
+    // 3. Execute Update
+    await prisma.order.update({
+      where: { id: orderId },
+      data: { status },
+    });
+    
+    revalidatePath('/admin');
+    revalidatePath(`/admin/orders/${orderId}`);
+    return { success: true };
+  } catch (error: unknown) {
+    console.error('Failed to update status:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+    return { success: false, error: errorMessage };
   }
 }

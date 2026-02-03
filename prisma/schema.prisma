@@ -206,13 +206,14 @@ enum PaymentStatus {
   REFUNDED
 }
 
+
 model OrderItem {
   id          String   @id @default(cuid())
   orderId     String
   productId   String
   variantId   String
   quantity    Int
-  price       Decimal  @db.Decimal(10, 2) // Price at time of purchase
+  price       Decimal  @db.Decimal(10, 2)
   total       Decimal  @db.Decimal(10, 2)
   
   // Snapshot of product info

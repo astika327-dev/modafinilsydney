@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { Package } from 'lucide-react';
+import LogoutButton from '@/components/LogoutButton';
 
 export default async function AccountPage() {
   const supabase = await createClient();
@@ -40,10 +41,15 @@ export default async function AccountPage() {
   return (
     <div className="min-h-screen bg-slate-50 pt-24 pb-12">
       <div className="container mx-auto px-4 max-w-4xl">
+
+
         <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-extrabold text-slate-800">My Account</h1>
-            <div className="text-slate-600">
-                Logged in as <span className="font-bold text-slate-900">{user.email}</span>
+            <div className="flex items-center gap-4">
+                <div className="text-slate-600 hidden md:block">
+                    Logged in as <span className="font-bold text-slate-900">{user.email}</span>
+                </div>
+                <LogoutButton />
             </div>
         </div>
 

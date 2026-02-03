@@ -42,18 +42,18 @@ export default function Footer() {
               Join thousands of satisfied customers across Australia. Order today and experience the difference.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="#products"
+              <Link
+                href="/products"
                 className="inline-flex items-center gap-2 bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300"
               >
                 Shop Now
-              </a>
-              <a
-                href="#contact"
+              </Link>
+              <Link
+                href="/contact"
                 className="inline-flex items-center gap-2 bg-white/10 border border-white/30 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300"
               >
                 Contact Us
-              </a>
+              </Link>
             </div>
           </div>
         </div>
