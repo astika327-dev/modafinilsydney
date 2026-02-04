@@ -66,11 +66,11 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
               <Image
-                src="/images/icon_web_new.png"
+                src="/images/icon_web_transparent.png"
                 alt="ModafinilSydney"
-                width={180}
-                height={45}
-                className="h-10 w-auto"
+                width={280}
+                height={70}
+                className="h-32 w-auto"
               />
             </Link>
             <p className="text-white/60 mb-6 max-w-sm">
@@ -160,7 +160,13 @@ export default function Footer() {
             <div className="flex items-center gap-4">
               <span className="text-white/50 text-sm">We Accept:</span>
               <div className="flex gap-2">
-                <span className="px-3 py-1 bg-white/10 rounded text-sm">🏦 Commonwealth Bank EFT</span>
+                <Image
+                  src="/images/commbank_white.svg"
+                  alt="Commonwealth Bank"
+                  width={180}
+                  height={40}
+                  className="h-8 w-auto"
+                />
               </div>
             </div>
           </div>

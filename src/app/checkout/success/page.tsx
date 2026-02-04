@@ -2,6 +2,7 @@
 
 import React, { Suspense } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle, Copy, Loader2 } from 'lucide-react';
 
@@ -30,7 +31,13 @@ function CheckoutContent() {
             <div className="space-y-3 text-sm text-slate-700">
                 <div className="flex justify-between">
                     <span className="text-slate-500">Bank Name:</span>
-                    <span className="font-medium">Commonwealth Bank</span>
+                    <Image
+                      src="/images/commbank_black.svg"
+                      alt="Commonwealth Bank"
+                      width={160}
+                      height={35}
+                      className="h-7 w-auto"
+                    />
                 </div>
                 <div className="flex justify-between">
                     <span className="text-slate-500">Account Name:</span>

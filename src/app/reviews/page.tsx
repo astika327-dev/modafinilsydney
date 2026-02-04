@@ -1,7 +1,7 @@
 
 
 import { Star, Quote, CheckCircle } from 'lucide-react';
-import Link from 'next/link';
+
 import WriteReviewForm from '@/components/WriteReviewForm';
 import { getReviews, getProductsForReview } from '@/lib/actions/review';
 
@@ -194,8 +194,17 @@ export default async function ReviewsPage() {
   return (
     <main className="min-h-screen bg-linear-to-b from-slate-50 to-white">
       {/* Hero Section */}
-      <section className="relative py-20 bg-linear-to-br from-blue-600 via-blue-700 to-cyan-600 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-10"></div>
+      <section className="relative py-24 bg-slate-900 text-white overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-linear-to-br from-slate-900/90 via-blue-900/80 to-slate-800/90" />
+          <div 
+            className="absolute inset-0 bg-cover bg-no-repeat opacity-40"
+            style={{
+              backgroundImage: 'url(/images/hero_new3.png)',
+              backgroundPosition: 'center 20%',
+            }}
+          />
+        </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
 
@@ -252,25 +261,7 @@ export default async function ReviewsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-linear-to-r from-blue-600 to-cyan-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-            Ready to Experience the Difference?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied Australian customers who trust us for their Modafinil needs.
-          </p>
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 bg-white text-blue-600 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-          >
-            Shop Now
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+
     </main>
   );
 }

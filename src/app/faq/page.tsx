@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import { Plus, MessageCircle, Phone, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { Plus, Phone, Mail } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'FAQ | ModafinilSydney - Frequently Asked Questions',
@@ -120,9 +119,10 @@ export default function FAQPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-linear-to-br from-slate-900/90 via-blue-900/80 to-slate-800/90" />
           <div 
-            className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40"
+            className="absolute inset-0 bg-cover bg-no-repeat opacity-40"
             style={{
-              backgroundImage: 'url(/images/hero_logo_new.png)',
+              backgroundImage: 'url(/images/hero_new3.png)',
+              backgroundPosition: 'center 20%',
             }}
           />
         </div>
@@ -155,12 +155,7 @@ export default function FAQPage() {
             <p className="text-slate-600 mb-8">
               Can&apos;t find the answer you&apos;re looking for? Our support team is here to help 24/7.
             </p>
-            <div className="grid md:grid-cols-3 gap-6">
-              <Link href="/contact" className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <MessageCircle className="w-10 h-10 text-blue-600 mx-auto mb-4" />
-                <h3 className="font-bold text-slate-800 mb-2">Live Chat</h3>
-                <p className="text-sm text-slate-500">Chat with our support team in real-time</p>
-              </Link>
+            <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
               <a href="tel:1300061794" className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
                 <Phone className="w-10 h-10 text-blue-600 mx-auto mb-4" />
                 <h3 className="font-bold text-slate-800 mb-2">Call Steve</h3>

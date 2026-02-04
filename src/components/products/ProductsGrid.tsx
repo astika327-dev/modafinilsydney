@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
-import { Star, ShoppingCart, Filter } from 'lucide-react';
+import { Star, ShoppingCart } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
 // Temporary static data - will be replaced with database data
@@ -126,7 +126,7 @@ const products = [
   },
 ];
 
-const categories = ['All', 'Modafinil'];
+
 
 function ProductCard({ product }: { product: typeof products[0] }) {
   const [selectedVariant, setSelectedVariant] = useState(0);
@@ -147,21 +147,13 @@ function ProductCard({ product }: { product: typeof products[0] }) {
     setIsOpen(true);
   };
 
-  const badgeStyles = {
-    bestseller: 'bg-linear-to-r from-amber-500 to-orange-500',
-    popular: 'bg-linear-to-r from-blue-500 to-cyan-500',
-    new: 'bg-linear-to-r from-emerald-500 to-green-500',
-  };
+
 
   return (
     <div className="group bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       {/* Image */}
       <Link href={`/products/${product.slug}`} className="block relative aspect-square bg-slate-50 overflow-hidden">
-        {product.badge && (
-          <span className={`absolute top-4 left-4 z-10 px-3 py-1 text-white text-xs font-bold uppercase rounded-full ${badgeStyles[product.badge]}`}>
-            {product.badge === 'bestseller' ? 'Best Seller' : product.badge}
-          </span>
-        )}
+
         <div className="w-full h-full flex items-center justify-center p-8 group-hover:scale-105 transition-transform duration-300 relative">
             <Image 
                 src={product.image}
@@ -228,41 +220,22 @@ function ProductCard({ product }: { product: typeof products[0] }) {
 }
 
 export default function ProductsGrid() {
-  const [activeCategory, setActiveCategory] = useState('All');
-
-  const filteredProducts = activeCategory === 'All'
-    ? products
-    : products.filter(p => p.category === activeCategory);
-
   return (
     <section className="py-16 bg-linear-to-b from-white to-slate-50">
       <div className="container mx-auto px-4">
-        {/* Filters */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-12">
-          <div className="flex items-center gap-2">
-            <Filter className="w-5 h-5 text-slate-400" />
-            <span className="text-slate-600 font-medium">Filter by:</span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-4 py-2 rounded-full font-medium transition-all ${
-                  activeCategory === category
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+        {/* Header Text */}
+        <div className="text-center max-w-4xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            Modafinil Products & Prices
+          </h2>
+          <p className="text-lg text-slate-600 leading-relaxed">
+            View our range of Modafinil products from Modafinil Australia Direct designed to help you stay awake, alert and on top of your game. You can purchase these online and have them delivered directly to your door throughout Australia.
+          </p>
         </div>
 
         {/* Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {filteredProducts.map((product) => (
+          {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

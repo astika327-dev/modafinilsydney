@@ -147,21 +147,13 @@ function ProductCard({ product }: { product: Product }) {
     setIsOpen(true);
   };
 
-  const badgeStyles = {
-    bestseller: 'bg-linear-to-r from-amber-500 to-orange-500',
-    popular: 'bg-linear-to-r from-blue-500 to-cyan-500',
-    new: 'bg-linear-to-r from-emerald-500 to-green-500',
-  };
+
 
   return (
     <div className="group bg-white rounded-2xl shadow-lg shadow-slate-200/50 overflow-hidden hover:shadow-xl hover:shadow-slate-200/60 transition-all duration-300 hover:-translate-y-1">
       {/* Image */}
       <div className="relative aspect-square bg-slate-50 overflow-hidden">
-        {product.badge && (
-          <span className={`absolute top-4 left-4 z-10 px-3 py-1 text-white text-xs font-bold uppercase rounded-full ${badgeStyles[product.badge]}`}>
-            {product.badge === 'bestseller' ? 'Best Seller' : product.badge}
-          </span>
-        )}
+
         <div className="w-full h-full relative">
             <Image 
                 src={product.image}

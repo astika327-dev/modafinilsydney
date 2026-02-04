@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ShoppingCart, Menu, X, User as UserIcon, Package } from 'lucide-react';
+import { ShoppingCart, Menu, X, User as UserIcon } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import type { User } from '@supabase/supabase-js';
 
@@ -69,11 +69,11 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="flex items-center">
               <Image
-                src="/images/icon_web_new.png"
+                src="/images/icon_web_transparent.png"
                 alt="ModafinilSydney"
-                width={200}
-                height={50}
-                className="h-12 w-auto"
+                width={240}
+                height={60}
+                className="h-28 w-auto"
                 priority
               />
             </Link>
@@ -94,23 +94,19 @@ export default function Header() {
 
             {/* Actions */}
             <div className="flex items-center gap-2">
-              {/* Track Order - Desktop */}
-              <Link
-                href="/track"
-                className="hidden md:flex items-center gap-2 px-4 py-2 text-slate-600 hover:text-blue-600 font-medium transition-colors"
-              >
-                <Package className="w-4 h-4" />
-                Track
-              </Link>
+
 
               {/* Account/Login */}
-              <Link
-                href={user ? "/account" : "/login"}
-                className="p-2 hover:bg-slate-100 rounded-full transition-colors group relative"
-                title={user ? "My Account" : "Sign In"}
-              >
-                <UserIcon className={`w-6 h-6 ${user ? 'text-blue-600' : 'text-slate-700'}`} />
-              </Link>
+              {/* Account/Login - Only show if logged in */}
+              {user && (
+                <Link
+                  href="/account"
+                  className="p-2 hover:bg-slate-100 rounded-full transition-colors group relative"
+                  title="My Account"
+                >
+                  <UserIcon className="w-6 h-6 text-blue-600" />
+                </Link>
+              )}
 
               {/* Cart */}
               <button

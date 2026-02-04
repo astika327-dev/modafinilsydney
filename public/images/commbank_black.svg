@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 100">
+  <path fill="#FFCC00" d="M 50 0 L 75 25 L 75 75 L 50 100 L 0 50 Z" />
+  <path fill="#111111" d="M 100 50 L 75 25 L 75 75 Z" />
+  <text x="120" y="65" font-family="Arial, sans-serif" font-weight="bold" font-size="44" fill="#111111">Commonwealth Bank</text>
+</svg>

@@ -1,41 +1,17 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { Search, Package, ExternalLink, Truck, Mail } from 'lucide-react';
 
-const trackingServices = [
-  {
-    id: 'auspost',
-    name: 'Australia Post',
-    description: 'Track domestic and international parcels via Australia Post',
-    icon: '🇦🇺',
-    color: 'from-red-500 to-red-600',
-    baseUrl: 'https://auspost.com.au/mypost/track/#/search?trackIds=',
-  },
-  {
-    id: '17track',
-    name: '17TRACK',
-    description: 'Universal tracking for 2000+ carriers worldwide',
-    icon: '🌐',
-    color: 'from-blue-500 to-blue-600',
-    baseUrl: 'https://t.17track.net/en#nums=',
-  },
-  {
-    id: 'aftership',
-    name: 'AfterShip',
-    description: 'Track shipments from 900+ carriers globally',
-    icon: '📦',
-    color: 'from-emerald-500 to-emerald-600',
-    baseUrl: 'https://www.aftership.com/track/',
-  },
-];
+const AUSPOST_URL = 'https://auspost.com.au/mypost/track/#/search?trackIds=';
 
 export default function TrackOrderPage() {
   const [trackingNumber, setTrackingNumber] = useState('');
 
-  const handleTrack = (service: typeof trackingServices[0]) => {
+  const handleTrack = () => {
     if (!trackingNumber.trim()) return;
-    const url = service.baseUrl + encodeURIComponent(trackingNumber.trim());
+    const url = AUSPOST_URL + encodeURIComponent(trackingNumber.trim());
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -46,9 +22,10 @@ export default function TrackOrderPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-linear-to-br from-slate-900/90 via-blue-900/80 to-slate-800/90" />
           <div 
-            className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40"
+            className="absolute inset-0 bg-cover bg-no-repeat opacity-40"
             style={{
-              backgroundImage: 'url(/images/hero_logo_new.png)',
+              backgroundImage: 'url(/images/hero_new3.png)',
+              backgroundPosition: 'center 20%',
             }}
           />
         </div>
@@ -60,7 +37,7 @@ export default function TrackOrderPage() {
             Track Your Order
           </h1>
           <p className="text-xl text-blue-100 max-w-2xl mx-auto">
-            Enter your tracking number below and choose your preferred tracking service
+            Enter your tracking number below to track via Australia Post
           </p>
         </div>
       </div>
@@ -68,59 +45,47 @@ export default function TrackOrderPage() {
       <div className="container mx-auto px-4 py-12">
         {/* Search Input */}
         <div className="max-w-2xl mx-auto mb-12">
-          <div className="bg-white rounded-2xl shadow-xl p-8">
-            <label className="block text-sm font-semibold text-slate-700 mb-3">
+          <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
+            {/* AusPost Logo */}
+            <div className="flex items-center justify-center mb-8 gap-3">
+              <Image
+                src="/images/auspost.svg"
+                alt="Australia Post"
+                width={60}
+                height={60}
+                className="h-14 w-auto"
+              />
+              <span className="text-3xl font-bold text-slate-800 tracking-tight">Australia Post</span>
+            </div>
+
+            <label className="block text-sm font-semibold text-slate-700 mb-3 text-left">
               Tracking Number
             </label>
-            <div className="relative">
+            <div className="relative mb-6">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
               <input
                 type="text"
                 value={trackingNumber}
                 onChange={(e) => setTrackingNumber(e.target.value)}
                 placeholder="Enter your tracking number..."
-                className="w-full pl-12 pr-4 py-4 text-lg rounded-xl border-2 border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 outline-none transition-all"
+                className="w-full pl-12 pr-4 py-4 text-lg rounded-xl border-2 border-slate-200 focus:border-red-500 focus:ring-4 focus:ring-red-500/10 outline-none transition-all"
+                onKeyDown={(e) => e.key === 'Enter' && handleTrack()}
               />
             </div>
-            <p className="text-sm text-slate-500 mt-3">
+
+            <button
+              onClick={() => handleTrack()}
+              disabled={!trackingNumber.trim()}
+              className="w-full bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              Track Order
+              <ExternalLink className="w-5 h-5" />
+            </button>
+
+            <p className="text-sm text-slate-500 mt-4">
               Your tracking number was sent to your email after your order was shipped.
             </p>
           </div>
-        </div>
-
-        {/* Tracking Services */}
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-xl font-bold text-slate-800 mb-6 text-center">
-            Choose a Tracking Service
-          </h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {trackingServices.map((service) => (
-              <button
-                key={service.id}
-                onClick={() => handleTrack(service)}
-                disabled={!trackingNumber.trim()}
-                className={`group relative bg-white rounded-2xl shadow-lg p-6 text-left transition-all duration-300 hover:shadow-xl hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg`}
-              >
-                <div className={`w-14 h-14 rounded-xl bg-linear-to-br ${service.color} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
-                  {service.icon}
-                </div>
-                <h3 className="text-lg font-bold text-slate-800 mb-2 flex items-center gap-2">
-                  {service.name}
-                  <ExternalLink className="w-4 h-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                </h3>
-                <p className="text-sm text-slate-500">
-                  {service.description}
-                </p>
-              </button>
-            ))}
-          </div>
-
-          {!trackingNumber.trim() && (
-            <p className="text-center text-slate-500 mt-6">
-              Please enter a tracking number above to enable tracking
-            </p>
-          )}
         </div>
 
         {/* Shipping Info */}

@@ -106,9 +106,10 @@ export default function ContactPage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-linear-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95" />
           <div 
-            className="absolute inset-0 bg-cover bg-top bg-no-repeat opacity-40"
+            className="absolute inset-0 bg-cover bg-no-repeat opacity-40"
             style={{
-              backgroundImage: 'url(/images/hero_logo_new.png)',
+              backgroundImage: 'url(/images/hero_new3.png)',
+              backgroundPosition: 'center 20%',
             }}
           />
         </div>

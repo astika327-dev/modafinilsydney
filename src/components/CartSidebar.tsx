@@ -1,11 +1,24 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { X, Minus, Plus, ShoppingBag, ArrowRight } from 'lucide-react';
+import { X, Minus, Plus, ShoppingBag, ArrowRight, LogIn } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
+import type { User } from '@supabase/supabase-js';
 
 export default function CartSidebar() {
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, getSubtotal } = useCartStore();
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    // Check auth status
+    import('@/lib/supabase/client').then(({ createClient }) => {
+      const supabase = createClient();
+      supabase.auth.getUser().then(({ data }) => {
+        setUser(data.user);
+      });
+    });
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -51,11 +64,25 @@ export default function CartSidebar() {
               <p className="text-slate-500 mb-6">Add some products to get started</p>
               <button
                 onClick={() => setIsOpen(false)}
-                className="inline-flex items-center gap-2 bg-linear-to-r from-blue-600 to-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-all hover:from-blue-700 hover:to-blue-800"
+                className="inline-flex items-center gap-2 bg-linear-to-r from-blue-600 to-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-all hover:from-blue-700 hover:to-blue-800 mb-4"
               >
                 Start Shopping
                 <ArrowRight className="w-5 h-5" />
               </button>
+              
+              {!user && (
+                <div className="mt-8 pt-8 border-t border-slate-100 w-full max-w-xs">
+                  <p className="text-sm text-slate-500 mb-3">Already have an account?</p>
+                  <Link
+                    href="/login"
+                    onClick={() => setIsOpen(false)}
+                    className="inline-flex items-center gap-2 text-blue-600 font-semibold hover:underline"
+                  >
+                    <LogIn className="w-4 h-4" />
+                    Sign In to your account
+                  </Link>
+                </div>
+              )}
             </div>
           ) : (
             <div className="space-y-4">
@@ -109,6 +136,22 @@ export default function CartSidebar() {
         {/* Footer */}
         {items.length > 0 && (
           <div className="p-6 border-t border-slate-200 bg-white">
+            {!user && (
+              <div className="mb-4 p-4 bg-blue-50 border border-blue-100 rounded-xl flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-blue-900">Have an account?</p>
+                  <p className="text-xs text-blue-700">Sign in for faster checkout</p>
+                </div>
+                <Link
+                  href="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors"
+                >
+                  Sign In
+                </Link>
+              </div>
+            )}
+            
             <div className="flex items-center justify-between mb-2">
               <span className="text-slate-600">Subtotal</span>
               <span className="text-2xl font-bold text-slate-800">${subtotal.toFixed(2)}</span>

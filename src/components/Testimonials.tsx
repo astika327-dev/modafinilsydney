@@ -66,21 +66,21 @@ export default function Testimonials() {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-linear-to-b from-slate-50 to-white">
+    <section id="testimonials" className="py-8 bg-linear-to-b from-slate-50 to-white">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-6">
 
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-2">
             What Our Customers Say
           </h2>
-          <p className="text-xl text-slate-500 max-w-2xl mx-auto">
+          <p className="text-sm text-slate-500 max-w-2xl mx-auto">
             Trusted by thousands of Australians for cognitive enhancement
           </p>
         </div>
 
         {/* Testimonials Slider */}
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-2xl mx-auto">
           <div className="overflow-hidden rounded-2xl">
             <div
               ref={trackRef}
@@ -92,27 +92,27 @@ export default function Testimonials() {
                   key={index}
                   className="w-full shrink-0 px-4"
                 >
-                  <div className="bg-white rounded-2xl shadow-xl shadow-slate-200/50 p-8 md:p-12">
+                  <div className="bg-white rounded-xl shadow-lg shadow-slate-200/50 p-5 md:p-6">
                     {/* Stars */}
-                    <div className="flex gap-1 mb-6">
+                    <div className="flex gap-1 mb-4">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-6 h-6 text-amber-400 fill-amber-400" />
+                        <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
                       ))}
                     </div>
 
                     {/* Quote */}
-                    <p className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-8">
+                    <p className="text-base md:text-lg text-slate-700 leading-relaxed mb-6">
                       &ldquo;{testimonial.text}&rdquo;
                     </p>
 
                     {/* Author */}
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 bg-linear-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-linear-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
                         {testimonial.initials}
                       </div>
                       <div>
-                        <h4 className="font-bold text-slate-800">{testimonial.author}</h4>
-                        <p className="text-slate-500">{testimonial.location}</p>
+                        <h4 className="font-bold text-sm text-slate-800">{testimonial.author}</h4>
+                        <p className="text-xs text-slate-500">{testimonial.location}</p>
                       </div>
                     </div>
                   </div>
@@ -122,16 +122,16 @@ export default function Testimonials() {
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-3 mt-6">
             <button
               onClick={goToPrev}
-              className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors border border-slate-200"
+              className="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors border border-slate-200"
             >
-              <ChevronLeft className="w-6 h-6 text-slate-700" />
+              <ChevronLeft className="w-4 h-4 text-slate-700" />
             </button>
 
             {/* Dots */}
-            <div className="flex gap-2">
+            <div className="flex gap-1.5">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
@@ -139,9 +139,9 @@ export default function Testimonials() {
                     setIsAutoPlaying(false);
                     setCurrentIndex(index);
                   }}
-                  className={`w-3 h-3 rounded-full transition-all ${
+                  className={`w-2 h-2 rounded-full transition-all ${
                     index === currentIndex
-                      ? 'bg-blue-600 w-8'
+                      ? 'bg-blue-600 w-6'
                       : 'bg-slate-300 hover:bg-slate-400'
                   }`}
                 />
@@ -150,9 +150,9 @@ export default function Testimonials() {
 
             <button
               onClick={goToNext}
-              className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-slate-50 transition-colors border border-slate-200"
+              className="w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-slate-50 transition-colors border border-slate-200"
             >
-              <ChevronRight className="w-6 h-6 text-slate-700" />
+              <ChevronRight className="w-4 h-4 text-slate-700" />
             </button>
           </div>
         </div>
