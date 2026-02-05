@@ -38,20 +38,18 @@ export default function Hero() {
           </div>
 
           {/* Title */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
-            Premium{' '}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight uppercase">
+            BUY{' '}
             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-              Modafinil
-            </span>
-            <br />
-            Delivered to Your Door
+              MODAFINIL
+            </span>{' '}
+            ONLINE IN AUSTRALIA
           </h1>
 
           {/* Subtitle */}
-          <p className="text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
-            Enhance your cognitive performance with pharmaceutical-grade Modafinil. 
-            Fast, discreet shipping across Australia with guaranteed delivery.
-          </p>
+          <h2 className="text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
+            Boost your focus with pharmaceutical-grade Modafinil, delivered fast and discreet right across Sydney. Order today for tracked, guaranteed delivery straight to your door—no fuss, just results. Get Modafinil delivered fast and discreet with Australia-wide tracked shipping. We ship to Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, Hobart, and Darwin— Order now and we’ll send it off ASAP.
+          </h2>
 
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 mb-12">
