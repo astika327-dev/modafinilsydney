@@ -48,7 +48,7 @@ export default function Hero() {
 
           {/* Subtitle */}
           <h2 className="text-xl text-white/80 mb-8 leading-relaxed max-w-2xl">
-            Boost your focus with pharmaceutical-grade Modafinil, delivered fast and discreet right across Sydney. Order today for tracked, guaranteed delivery straight to your door—no fuss, just results. Get Modafinil delivered fast and discreet with Australia-wide tracked shipping. We ship to Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, Hobart, and Darwin— Order now and we’ll send it off ASAP.
+            Get Modafinil delivered fast and discreet with Australia-wide tracked shipping. We ship to Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, Hobart, and Darwin— Order now and we’ll send it off ASAP.
           </h2>
 
           {/* CTA Buttons */}

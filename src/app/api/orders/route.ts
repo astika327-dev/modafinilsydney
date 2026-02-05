@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/lib/prisma';
+import { sendOrderNotification } from '@/lib/mail';
 
 // Order status constants (matching Prisma schema)
 const ORDER_STATUS = {
@@ -167,6 +168,22 @@ export async function POST(request: NextRequest) {
       include: {
         items: true,
         tracking: true,
+      },
+    });
+
+    // Send email notification (Fail-safe: error inside function won't crash request)
+    await sendOrderNotification({
+      orderNumber: order.orderNumber,
+      guestName: order.guestName || order.shippingName,
+      guestEmail: order.guestEmail,
+      total: Number(order.total),
+      items: orderItems,
+      shippingAddress: {
+        street: order.shippingStreet,
+        city: order.shippingCity,
+        state: order.shippingState,
+        postcode: order.shippingPostcode,
+        country: order.shippingCountry,
       },
     });
 
